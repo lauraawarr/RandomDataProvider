@@ -22,6 +22,14 @@ namespace RandomDataProvider
         {
             services.AddDbContext<RandomContext>(opt =>
                opt.UseInMemoryDatabase("Dataset"));
+            services.AddCors(opt =>
+            {
+                opt.AddPolicy("LocalCorsPolicy",
+                builder =>
+                {
+                    builder.AllowAnyOrigin();
+                });
+            });
             services.AddControllers();
         }
 
@@ -36,6 +44,8 @@ namespace RandomDataProvider
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("LocalCorsPolicy");
 
             app.UseAuthorization();
 
