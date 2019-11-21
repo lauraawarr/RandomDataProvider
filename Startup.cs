@@ -24,10 +24,10 @@ namespace RandomDataProvider
                opt.UseInMemoryDatabase("Dataset"));
             services.AddCors(opt =>
             {
-                opt.AddPolicy("LocalCorsPolicy",
+                opt.AddPolicy("CustomCorsPolicy",
                 builder =>
                 {
-                    builder.AllowAnyOrigin();
+                    builder.WithOrigins("http://laurawarr.ca");
                 });
             });
             services.AddControllers();
@@ -45,7 +45,7 @@ namespace RandomDataProvider
 
             app.UseRouting();
 
-            app.UseCors("LocalCorsPolicy");
+            app.UseCors("CustomCorsPolicy");
 
             app.UseAuthorization();
 

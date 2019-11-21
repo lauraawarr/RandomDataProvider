@@ -32,7 +32,7 @@ namespace RandomDataProvider.Controllers
         public async Task<ActionResult<IEnumerable<DataPoint>>> GetRandomDataPoints()
         {
             Random random = new Random();
-            return await _context.DataPoints.OrderByRandom().Take(random.Next(1, 50)).ToListAsync();
+            return await _context.DataPoints.OrderByRandom().Take(random.Next(1, 15)).ToListAsync();
         }
 
         // GET: api/DataPoints/5
